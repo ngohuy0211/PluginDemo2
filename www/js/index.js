@@ -85,3 +85,26 @@ function callVibration() {
     // rung trong 3s
     navigator.vibrate(3000);
 }
+
+function takePicture() {
+    navigator.camera.getPicture(onSuccess, onFail,{
+        quality: 50,
+        // allow = true co nghia la sau khi chup xong co the chinh sua anh roi moi upload len
+        allowEdit: false, 
+        // anh tra ve
+        destinationType: Camera.DestinationType.FILE_URI
+    })
+}
+
+function onSuccess(url) {
+    alert(url);
+
+    ic = document.getElementById('imageContainer');
+
+    ic.innerHTML = '<img src ="' + url + '" width="50%" />';
+
+}
+
+function onFail() {
+    alert('Failed because: ' + message);
+}
